@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <header></header>
+    <main>
+        <div class="wrapper" id="main"></div>
+    </main>
+    <footer></footer>
+    <script>
+        var hashMain = init()
+        var keys = hashMain['keys']
+        var hash = hashMain['hash']
+
+        createKeyboard(keys,hash)
+
+        listenToUser(hash)
+
+        function getFromLocalStorage(naem) {
+            return JSON.parse(localStorage.getItem(name) || 'null')
+        }
+
+        function createSpan(text) {
+            var spans = tag('span')
+            spans.textContent = text
+            spans.className = 'text'
+            return spans
+        }
+
+        function createButton(id) {
+            var buttons = tag('button')
+            buttons.textContent = 'E'
+            buttons.title = "编辑"
+            buttons.id = id
+            buttons.onclick = function (xx) {
+                // console.log(button.id)//因为是容器，所以总是最后一个
+                // console.log(xx['target']['id'])
+                var button2 = xx['target']
+                // console.log(button2)
+                var img2 = button2.previousSibling
+                var x = prompt("输入一个网址")
+                hash[button2['id']] = x
+                img2.src = 'http://' + x + '/favicon.ico'
+                img2.onerror = function (e) {
+                    e.target.src = './walljpg'
+                }
+                localStorage.setItem('zzz', JSON.stringify(hash))
+                console.log(hash)
+            }
+            return buttons
+        }
+
+        function createImg(domain) {
+            var imgs = tag('img')
+            if (domain) {
+                imgs.src = 'http://' + domain + '/favicon.ico'
+            } else {
+                imgs.src = './wall.jpg'
+            }
+            imgs.onerror = function (e) {
+                // console.log(e.target)
+                e.target.src = './wall.jpg'
+            }
+            return imgs
+        }
+
+        function init() {
+            var keys = {
+                '0': ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'deleta'],
+                '1': ['tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\'],
+                '2': ['大小写', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'enter'],
+                '3': ['shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'shift'],
+                'length': 4
+            }
+            var hash = {
+                q: 'www.qq.com',
+                w: 'weibo.com',
+                e: 'www.ele.me',
+                r:'www.ruanyifeng.com/blog',
+                t: 'tencent.com',
+                y: 'shared.ydstatic.com/images',
+                d: 'douyu.com',
+                h: 'huya.com'
+            }
+
+            var hashLocal = getFromLocalStorage('zzz')
+            if (hashLocal) {
+                hash = hashLocal
+            }
+            return {
+                'keys': keys,
+                'hash': hash
+            }
+        }
+
+        function createKeyboard(keys, hash) {
+            for (var index = 0; index < keys['length']; index++) {
+                var divs = tag('div')
+                divs.className = "row"
+                main.appendChild(divs)
+
+                var row = keys[index]
+
+                for (var index2 = 0; index2 < row['length']; index2++) {
+                    var sapns = createSpan(row[index2])
+                    var buttons = createButton(row[index2])
+                    var imgs = createImg(hash[row[index2]])
+
+                    var kbds = tag('kbd')
+                    kbds.className = 'key'
+
+                    // console.log('aa')
+                    kbds.appendChild(sapns)
+                    kbds.appendChild(imgs)
+                    kbds.appendChild(buttons)
+                    divs.appendChild(kbds)
+                }
+
+            }
+        }
+        function listenToUser(hash){
+            document.onkeypress=function(e){
+                var kk =e['key']
+                var website = hash[kk]
+                window.open('http://'+website,'_blank')
+            }
+        }
+        function tag(tagName) {
+            return document.createElement(tagName)
+        }
+    </script>
+</body>
+
+</html>

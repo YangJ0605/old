@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+.clearfix {
+    content: '';
+    display: block;
+    clear: both;
+}
+body {
+    background:gray url(./wall.webp) no-repeat center center;
+    background-size: cover;
+}
+#main kbd {
+    border: 1px solid red;
+    width: 4em;
+    height: 4em;
+    display: inline-block;
+    position: relative;
+    
+}
+main {
+    height: 100vh;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#main {
+    padding: 75px 0 0 16px;
+    /* margin: 0; */
+    display: inline-block;
+    text-transform: uppercase;
+    padding: 0 50px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 5px;
+}
+#main  button {
+    position: absolute;
+    left: 10%;
+    bottom: 6%;
+    display: none;
+    color: orange;
+    background: gray;
+    border: none;
+    width: 16px;
+    width: 16px;
+}
+#main kbd:hover>button {
+    display: block;
+    font-size: 10px;
+    cursor: pointer;
+}
+#main .key {
+    width: 50px;
+    height: 40px;
+    background: linear-gradient(to bottom,#292929 0%,#111111 100%);
+    border: 1px solid #373737;
+    color: #c5c5c5;
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px #1a1b1c,0 0 0 2px #1f2020,0 3px 0 2px #080808;
+    /* display: inline-flex;
+    justify-content: center;
+    align-items:center; */
+    margin: 0 10px;
+    font-family: Helvetica;
+    position: relative;
+   
+}
+.row {
+    margin: 20px;
+}
+#main>div:nth-child(1)>kbd:last-child{
+    width: 80px;
+}
+#main>div:nth-child(2)>kbd:nth-child(1){
+    width: 80px;
+    text-align: left;
+}
+#main>div:nth-child(3)>kbd:nth-child(1){
+    width: 90px;
+    text-align: left;
+}
+#main>div:nth-child(3)>kbd:last-child{
+    width:110px;
+}
+#main>div:nth-child(4)>kbd:nth-child(1){
+    width: 135px;
+    text-align: left;
+}
+#main>div:nth-child(4)>kbd:last-child{
+    width: 135px;
+}
+.key img {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 50%
+}
+

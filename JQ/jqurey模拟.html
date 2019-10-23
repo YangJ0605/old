@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li id="item1">选项1</li>
+        <li id="item2">选项2</li>
+        
+    </ul>
+    <script>
+        window.jQuery = function(nodeOrSeletor){
+            //定义一个对象用来保存传进来的参数
+            let nodes = {length:0}
+            if(typeof nodeOrSeletor === 'string'){//如果传进来的是CSS选择器
+                let temp = document.querySelectorAll(nodeOrSeletor)
+                for(let i =0;i<temp.length;i++){ //遍历temp这个伪数组，并且把它们都放入nodes对象中存储
+                    nodes[nodes.length]=temp[i]
+                    nodes.length++
+                }
+            }else if(nodeOrSeletor instanceof Node){// 传进来的是DOM对象，把它放入nodes对象中存储
+                nodes={
+                    0:nodeOrSeletor,
+                    length:1
+                }
+            }
+            nodes.adaClass = (classes)=>{ //nodes上添加方法
+                classes.forEach((value)=>{
+                    for(let i =0;i<nodes.length;i++){
+                        nodes[i].classList.add(value)
+                    }
+                })
+            }
+            // nodes.getText = ()=>{
+            //     let texts = []
+            //     for (let i=0;i<nodes.length;i++){
+            //         texts.push(nodes[i].textContent)
+            //     }
+            //     return texts
+            // }
+            // nodes.setText = (text)=>{
+            //     for(let i=0;i<nodes.length;i++){
+            //         nodes[i].textContent=text
+            //     }
+            // }
+            nodes.text = function(text){
+                if(text === undefined){//如果没有传参数，是获取内容并返回
+                    var texts = []
+                    for (let i=0;i<nodes.length;i++){
+                    texts.push(nodes[i].textContent)
+                }
+                return texts
+                }else {//设置内容
+                for(let i=0;i<nodes.length;i++){
+                    nodes[i].textContent=text
+                }
+                }
+            }
+            return nodes
+        }
+        var node2 = jQuery('ul>li')
+        node2.adaClass(['red'])
+       console.log(node2.text())
+       node2.text('hi')
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .images {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .window {
+            width: 300px;
+            overflow: hidden;
+            height: 400px;
+        }
+
+        .red {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="window">
+        <div class="images" id="images">
+            <img src="http://gss0.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/2fdda3cc7cd98d10fcb44a112b3fb80e7bec90aa.jpg"
+                alt="图片1" width="300">
+            <img src="http://p2.qhmsg.com/t017eaa43a5e81473a5.jpg" alt="图片2" width="300">
+            <img src="http://p2.qhimg.com/t01e43949e6206eb43d.jpg" alt="图片3" width="300">
+        </div>
+    </div>
+    <div id="button">
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+    </div>
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script>
+
+    </script>
+    <script>
+        var allButtons = $('div#button>button')
+        for (let i = 0; i < allButtons.length; i++) {
+            $(allButtons[i]).on('click', function (x) {
+                
+                var index = $(allButtons[i]).index() //x.currentTarget
+                var p = index * -300
+                $('#images').css({
+                    transform: 'translate(' + p + 'px)'
+                })
+                activeButton(allButtons.eq(index))
+                n=index
+                window.clearInterval(timerId)
+                timerId = setTimer()
+            })
+        }
+        var n = 0
+        var size = allButtons.length
+        var timerId = setTimer()
+        playSlide(n%size)    
+
+        $('.window').on('mouseenter', function () {
+            window.clearInterval(timerId)
+        })
+        $('.window').on('mouseleave', function () {
+            timerId = setTimer()
+        })
+
+        function playSlide(index){
+            allButtons.eq(index).trigger('click')
+        }
+
+        function activeButton ($button){
+            $button
+            .addClass('red')
+            .siblings().removeClass('red')
+        }
+        function setTimer (){
+            return setInterval(() => {
+                n += 1
+               playSlide(n%size)
+            }, 1000)
+        }
+    </script>
+</body>
+
+</html>

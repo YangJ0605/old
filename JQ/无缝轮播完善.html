@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .window {
+            width: 400px;
+            height: 300px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        .images {
+            display: flex;
+            transition: all 1s;
+        }
+
+        .images>img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="window">
+            <div class="images" id="slides">
+                <img src="./images/1.png" alt="" width="400" height="300">
+                <img src="./images/2.png" alt="" width="400" height="300">
+                <img src="./images/3.png" alt="" width="400" height="300">
+                <img src="./images/4.png" alt="" width="400" height="300">
+                <img src="./images/5.png" alt="" width="400" height="300">
+            </div>
+        </div>
+        <div class="controls" style="text-align: center;">
+            <span id="pervious">上一张</span>
+            <span id="next">下一张</span>
+        </div>
+
+        <div id=buttonWrapper style="text-align:center;">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+        </div>
+    </div>
+
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script>
+        let n
+        let $buttons = $('#buttonWrapper>button')
+        let $slides = $('#slides')
+        let $images = $slides.children('img')
+        let current = 0
+        let imgWidth = -$slides.width()
+        makeFakeSlides()
+        $slides.css({
+            transform: 'translateX(' + imgWidth + 'px)'
+        })
+        bindEvents()
+
+        $(next).on('click', function () {
+            goToSlides(current + 1)
+        })
+        $(pervious).on('click', function () {
+            goToSlides(current - 1)
+        })
+        let timer = setInterval(() => {
+            goToSlides(current + 1)
+        }, 1800)
+
+        $('.container').on('mouseenter', function () {
+                clearInterval(timer)
+            })
+            .on('mouseleave', function (){
+                timer = setInterval(() => {
+                    goToSlides(current + 1)
+                }, 1800)
+            })
+        document.addEventListener('visibilitychange', function (e) {
+            if (document.hidden) {
+                clearInterval(timer)
+            
+            } else {
+                timer = setInterval(() => {
+                    goToSlides(current + 1)
+                }, 1800)
+        }
+        })
+
+        function bindEvents(index) {
+            $('#buttonWrapper').on('click', 'button', function (e) {
+                let $button = $(e.currentTarget)
+                // console.log($button)
+                let index = $button.index()
+                // console.log(index)
+                goToSlides(index)
+            })
+        }
+
+
+        function goToSlides(index) {
+            if (index > $buttons.length - 1) {
+                index = 0
+            } else if (index < 0) {
+                index = $buttons.length - 1
+            }
+            // console.log(current+'==='+index)
+            if (current === $buttons.length - 1 && index === 0) {
+                $slides.css({
+                        transform: 'translateX(' + imgWidth * ($buttons.length + 1) + 'px)'
+                    })
+                    .one('transitionend', function () {
+                        $slides.hide()
+                            .offset()
+                        $slides.show()
+                            .css({
+                                transform: 'translateX(' + imgWidth * (index + 1) + 'px)'
+                            })
+                    })
+            } else if (current === 0 && index === $buttons.length - 1) {
+
+                $slides.css({
+                        transform: 'translateX(0px)'
+                    })
+                    .one('transitionend', function () {
+                        $slides.hide()
+                            .offset()
+                        $slides.show()
+                            .css({
+                                transform: 'translateX(' + imgWidth * (index + 1) + 'px)'
+                            })
+                    })
+            } else {
+                $slides.css({
+                    transform: 'translateX(' + imgWidth * (index + 1) + 'px)'
+                })
+            }
+            current = index
+        }
+
+        function makeFakeSlides() {
+            let $firstCopy = $images.eq(0).clone(true)
+            let $lastCopy = $images.eq($images.length - 1).clone(true)
+            $slides.append($firstCopy)
+            $slides.prepend($lastCopy)
+        }
+    </script>
+</body>
+
+</html>

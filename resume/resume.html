@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>resume</title>
+    <link rel="stylesheet" href="./css/loding.css">
+    <link rel="stylesheet" href="./css/resume.css">
+    <!-- icon图标 -->
+    <script src="//at.alicdn.com/t/font_1265649_k9342ue68za.js"></script>
+    <!-- swiper的CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+    <!-- 字体 -->
+    <link href='http://cdn.repository.webfont.com/webfonts/nomal/133541/19650/5dafeff4f629d808dc338a2a.css' rel='stylesheet' type='text/css' />
+</head>
+
+<body>
+    <div id="siteWlcome" class="site-welcome active">
+        <div class="loading ">
+
+        </div>
+    </div>
+    <div id="topNavBar" class="top">
+        <div class="topNavBar clearfix">
+            <a href="#" class="logo" style="float: left; ">
+                <span class="rs">RS</span><span class="card">card</span>
+            </a>
+            <nav style="float: right">
+                <ul class="clearfix">
+                    <li><a href="#sideAbout">关于</a></li>
+                    <li><a href="#sideSkills">技能</a></li>
+                    <li><a href="#sideWorks">作品</a>
+                        <ul class="submenu">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                        </ul>
+                    </li>
+                    <li><a href="#">博客</a>
+                        <ul class="submenu">
+                            <li>博客1</li>
+                            <li>博客2</li>
+                            <li>博客3</li>
+                        </ul>
+                    </li>
+                    <li><a href="#">日历</a></li>
+                    <li><a href="#">联系方式</a></li>
+                    <li><a href="#">其他</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <div class="banner">
+        <div class="mask"></div>
+    </div>
+    <main data-x class="main" id="sideAbout">
+        <div class="usercard">
+            <div class="pictureText clearfix">
+                <div class="picture">
+                    <img src="./avatar.jpg" alt="">
+                </div>
+                <div class="text">
+                    <span class="welcome">Hello
+                        <span class="sjx"></span>
+                    </span>
+
+                    <h1>杨杰</h1>
+                    <h3 style="margin-top:5px;">应聘岗位：前端工程师</h3>
+                    <hr>
+                    <dl>
+                        <dt>年龄</dt>
+                        <dd>22</dd>
+                        <dt>所在城市</dt>
+                        <dd>深圳</dd>
+                        <dt>邮箱</dt>
+                        <dd>1442122744@qq.com</dd>
+                        <dt>手机</dt>
+                        <dd>15700740060</dd>
+                    </dl>
+                </div>
+            </div>
+            <footer class="media">
+                <a href="#">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-taobao"></use>
+                    </svg>
+                </a>
+                <a href="#">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-weixin"></use>
+                    </svg>
+                </a>
+                <a href="#">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                </a>
+                <a href="#">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                </a>
+                <a href="#">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-jingdong"></use>
+                    </svg>
+                </a>
+                <a href="#">
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                </a>
+
+            </footer>
+        </div>
+        <p class="p-down">
+            <a href="#" class="download" download>下载 PDF 简历</a>
+        </p>
+    </main>
+    <div class="self-wrap">
+        <p class="self-introduction">
+            <span>中南林业科技大学，计算机信息工程学院自动化专业，2018年毕业</span> <br>
+            <span>自学前端半年</span>
+        </p>
+    </div>
+    <section data-x class="skills" id="sideSkills">
+        <h2>
+            技能
+        </h2>
+        <ol class="clearfix">
+            <li>
+                <h3>
+                    HTML5 &amp; CSS3;
+                </h3>
+                <div class="progressBar">
+                    <div class="progress" style="width:80%"></div>
+                </div>
+            </li>
+            <li>
+                <h3>
+                    React.js
+                </h3>
+                <div class="progressBar">
+                    <div class="progress" style="width:50%"></div>
+                </div>
+            </li>
+            <li>
+                <h3>
+                    Node.js
+                </h3>
+                <div class="progressBar">
+                    <div class="progress" style="width:60%"></div>
+                </div>
+            </li>
+            <li>
+                <h3>
+                    JavaScript
+                </h3>
+                <div class="progressBar">
+                    <div class="progress" style="width:75%"></div>
+                </div>
+            </li>
+            <li>
+                <h3>
+                    JQuery
+                </h3>
+                <div class="progressBar">
+                    <div class="progress" style="width:70%"></div>
+                </div>
+            </li>
+            <li>
+                <h3>
+                    Vue.js
+                </h3>
+                <div class="progressBar">
+                    <div class="progress" style="width:50%"></div>
+                </div>
+            </li>
+        </ol>
+    </section>
+    <section data-x class="portfolio" id="sideWorks">
+   
+        <h2>作品集</h2>
+        <!-- swiper的html引入 -->
+        <!-- MVC中的V就是用户看得见的东西，如下的html -->
+             <!-- Slider main container -->
+   <div class="swiper-container" >
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <img src="./works/nav-min.jpg" class="swiper-slide">
+            <img src="./works/canvas.jpg" class="swiper-slide">
+            <img src="./works/哆啦A梦.png" class="swiper-slide">
+            
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+    </div>
+    <div class="buttons">
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+    </div>
+        </section>
+        <section class="message">
+            <h2>留言</h2>
+            <ol id="messageList"></ol>
+            <form method="POST"  id="messagePostForm">
+                <label for="">姓名</label>
+                <input type="text" name="name">
+                <label for="">内容</label>
+                <input type="text" name="content">
+                <input type="submit" value="提交">
+            </form>
+        </section>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tween.js/17.1.1/Tween.min.js"> </script> 
+        <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+        <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.15.0/dist/av-min.js"></script>
+        <!-- 模块化 MVC中的M -->
+        <script src="./js/loding.js"></script>
+        <script src="./js/swiper-init.js"></script>
+        <script src="./js/tween-use.js"></script>
+        <script src="./js/sticky-nav.js"></script>
+        <script src="./js/smoothly-slides.js"></script>
+        <script src="./js/auto-slide.js"></script>
+        <script src="./js/message.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: #cccccc；
+        }
+        #bagua {
+            width: 200px;
+            height: 200px;
+            /* border: 1px solid red; */
+            border-radius: 50%;
+            background: linear-gradient(to right,white 0%,white 50%,black 50%,black 100%);
+            margin: 100px auto;
+            position: relative;
+            animation: spin 3s linear infinite;
+            
+        }
+        #bagua::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 40px solid black;
+            border-radius: 50%;
+            left:50px;
+            background-color: white;
+        }
+        #bagua::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            border: 40px solid white;
+            border-radius: 50%;
+            right:50px;
+            bottom: 0;
+        }
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="bagua">
+
+    </div>
+    
+</body>
+</html>

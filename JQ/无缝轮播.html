@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .window {
+            width: 400px;
+            height: 300px;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        .images {
+            position: relative;
+        }
+
+        .images>img {
+            width: 100%;
+            transition: all 2s;
+            position: absolute;
+            top: 0;
+        }
+
+        .images>img.current {
+            left: 0;
+            transform: translateX(0);
+            z-index: 1;
+        }
+
+        .images>img.enter {
+            left: 100%;
+        }
+
+        .images>img.leave {
+            left: -100%;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="window">
+        <div class="images" id="images">
+            <img src="./images/1.png" alt="" width="400" height="300">
+            <img src="./images/2.png" alt="" width="400" height="300">
+            <img src="./images/3.png" alt="" width="400" height="300">
+            <img src="./images/4.png" alt="" width="400" height="300">
+            <img src="./images/5.png" alt="" width="400" height="300">
+        </div>
+    </div>
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script>
+        let n
+        let size 
+        init()
+
+        setInterval(() => {
+            makeLeave(getImage(n))
+            .one('transitionend',(e)=>{
+                makeEnter($(e.currentTarget))
+            })
+            console.log(n)
+           makeCurrent(getImage(n+1))
+                n++
+        }, 1800)
+
+
+        function getImage(n) {
+            return $('.images>img:nth-child(' + x(n) + ')')
+        }
+        function x(n) {
+            size = $('.images>img').length
+            if (n > size) {
+                n = n % size
+                if (n === 0) {
+                    n = size
+                }
+            }
+            return n
+        }
+        function init() {
+            n = 1
+            getImage(n).addClass('current')
+                .siblings().addClass('enter')
+        }
+        function makeCurrent($node) {
+           return $node.addClass('current').removeClass('leave enter')
+
+        }
+
+        function makeEnter($node) {
+            $node.addClass('enter').removeClass('leave current')
+
+        }
+
+        function makeLeave($node) {
+          return $node.addClass('leave').removeClass('current enter')
+           
+        }
+    </script>
+</body>
+
+</html>

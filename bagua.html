@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>太极</title>
+    <style>
+        body {
+            background: #444;
+        }
+
+        #yinyang {
+            margin: 100px auto;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(to left, #ffffff 0%, #ffffff 50%, #000000 50%, #000000 100%);
+            position: relative;
+        }
+
+        .one {
+            width: 100px;
+            height: 100px;
+            background: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            left: 50px;
+        }
+        .two {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 0;
+            right: 50px;
+        }
+        .one .circle {
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 40px;
+            left: 40px;
+        }
+        .two .circle {
+            width: 20px;
+            height: 20px;
+            background: black;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="yinyang">
+        <div class="one">
+            <div class="circle"></div>
+        </div>
+        <div class="two">
+            <div class="circle"></div>
+        </div>
+    </div>
+</body>
+
+</html>
